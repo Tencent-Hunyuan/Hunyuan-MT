@@ -28,7 +28,7 @@
 
 The Hunyuan-MT comprises a translation model, Hunyuan-MT-7B, and an ensemble model, Hunyuan-MT-Chimera. The translation model is used to translate source text into the target language, while the ensemble model integrates multiple translation outputs to produce a higher-quality result. It primarily supports mutual translation among 33 languages, including five ethnic minority languages in China.
 
-### Key Features and Advantages
+## Key Features and Advantages
 
 - In the WMT25 competition, the model achieved first place in 30 out of the 31 language categories it participated in.
 - Hunyuan-MT-7B achieves industry-leading performance among models of comparable scale
