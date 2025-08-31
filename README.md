@@ -51,7 +51,7 @@ You can refer to our technical report for more experimental results and analysis
 
 &nbsp;
 
-## 模型链接
+## Model Link
 | Model Name  | Description | Download |
 | ----------- | ----------- |-----------
 | Hunyuan-MT-7B  | Hunyuan 7B translation model |🤗 [Model](https://huggingface.co/tencent/Hunyuan-MT-7B)|
