@@ -51,7 +51,7 @@ You can refer to our technical report for more experimental results and analysis
 
 &nbsp;
 
-## Model Link
+## Model Links
 | Model Name  | Description | Download |
 | ----------- | ----------- |-----------
 | Hunyuan-MT-7B  | Hunyuan 7B translation model |🤗 [Model](https://huggingface.co/tencent/Hunyuan-MT-7B)|
@@ -76,7 +76,7 @@ Translate the following segment into <target_language>, without additional expla
 <source_text>
 ```
 
-### Prompt Template for Hunyuan-MT-Chmeria-7B
+### Prompt Template for Hunyuan-MT-Chimera-7B
 
 ```
 Analyze the following multiple <target_language> translations of the <source_language> segment surrounded in triple backticks and generate a single refined <target_language> translation. Only output the refined translation, do not explain.
