@@ -62,19 +62,19 @@ You can refer to our technical report for more experimental results and analysis
 ## Prompts
 
 ### Prompt Template for ZH<=>XX Translation.
-
+```
 把下面的文本翻译成`<target_language>`，不要额外解释。
 
 `<source_text>`
+```
 
----
 
 ### Prompt Template for XX<=>XX Translation, excluding ZH<=>XX.
-
+```
 Translate the following segment into `<target_language>`, without additional explanation.
 
 `<source_text>`
-
+```
 
 ### Prompt Template for Hunyuan-MT-Chmeria-7B
 
