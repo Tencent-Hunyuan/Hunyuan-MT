@@ -63,25 +63,25 @@ You can refer to our technical report for more experimental results and analysis
 
 ### Prompt Template for ZH<=>XX Translation.
 ```
-把下面的文本翻译成`<target_language>`，不要额外解释。
+把下面的文本翻译成<target_language>，不要额外解释。
 
-`<source_text>`
+<source_text>
 ```
 
 
 ### Prompt Template for XX<=>XX Translation, excluding ZH<=>XX.
 ```
-Translate the following segment into `<target_language>`, without additional explanation.
+Translate the following segment into <target_language>, without additional explanation.
 
-`<source_text>`
+<source_text>
 ```
 
 ### Prompt Template for Hunyuan-MT-Chmeria-7B
 
 ```
-Analyze the following multiple `<target_language>` translations of the `<source_language>` segment surrounded in triple backticks and generate a single refined `<target_language>` translation. Only output the refined translation, do not explain.
+Analyze the following multiple <target_language> translations of the <source_language> segment surrounded in triple backticks and generate a single refined <target_language> translation. Only output the refined translation, do not explain.
 
-The `<source_language>` segment:
+The <source_language> segment:
 ```<source_text>```
 
 The multiple `<target_language>` translations:
