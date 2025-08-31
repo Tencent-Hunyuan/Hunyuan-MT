@@ -45,7 +45,7 @@
 
 ## 效果
 <div align='center'>
-<img src="imgs/overall_performance.png" width = "80%" />
+<img src="overall_performance.png" width = "80%" />
 </div>
 
 更多的实验效果和分析可以参考我们的技术报告<a href="Hunyuan_MT_Technical_Report.pdf"><b>Technical Report</b> </a>
@@ -65,39 +65,39 @@
 
 ### Prompt Template for ZH<=>XX Translation.
 ---
+```
+把下面的文本翻译成<target_language>，不要额外解释。
 
-把下面的文本翻译成`<target_language>`，不要额外解释。
-
-`<source_text>`
-
+<source_text>
+```
 ---
 
 ### Prompt Template for XX<=>XX Translation, excluding ZH<=>XX.
 ---
+```
+Translate the following segment into <target_language>, without additional explanation.
 
-Translate the following segment into `<target_language>`, without additional explanation.
-
-`<source_text>`
-
+<source_text>
+```
 ---
 
 ### Prompt Template for Hunyuan-MT-Chmeria-7B
 
 ---
+```
+Analyze the following multiple <target_language> translations of the <source_language> segment surrounded in triple backticks and generate a single refined <target_language> translation. Only output the refined translation, do not explain.
 
-Analyze the following multiple `<target_language>` translations of the `<source_language>` segment surrounded in triple backticks and generate a single refined `<target_language>` translation. Only output the refined translation, do not explain.
-
-The `<source_language>` segment:
+The <source_language> segment:
 ```<source_text>```
 
-The multiple `<target_language>` translations:
+The multiple <target_language> translations:
 1. ```<translated_text1>```
 2. ```<translated_text2>```
 3. ```<translated_text3>```
 4. ```<translated_text4>```
 5. ```<translated_text5>```
 6. ```<translated_text6>```
-
+```
 ---
 
 ## 使用 transformers 推理
