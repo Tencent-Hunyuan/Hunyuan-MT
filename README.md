@@ -26,7 +26,7 @@
 
 ## Model Introduction
 
-The Hunyuan Translation Model comprises a translation model, Hunyuan-MT-7B, and an ensemble model, Hunyuan-MT-Chimera. The translation model is used to translate source text into the target language, while the ensemble model integrates multiple translation outputs to produce a higher-quality result. It primarily supports mutual translation among 33 languages, including five ethnic minority languages in China.
+The Hunyuan-MT comprises a translation model, Hunyuan-MT-7B, and an ensemble model, Hunyuan-MT-Chimera. The translation model is used to translate source text into the target language, while the ensemble model integrates multiple translation outputs to produce a higher-quality result. It primarily supports mutual translation among 33 languages, including five ethnic minority languages in China.
 
 ### Key Features and Advantages
 
@@ -78,6 +78,7 @@ Translate the following segment into `<target_language>`, without additional exp
 
 ### Prompt Template for Hunyuan-MT-Chmeria-7B
 
+```
 Analyze the following multiple `<target_language>` translations of the `<source_language>` segment surrounded in triple backticks and generate a single refined `<target_language>` translation. Only output the refined translation, do not explain.
 
 The `<source_language>` segment:
@@ -90,7 +91,7 @@ The multiple `<target_language>` translations:
 4. ```<translated_text4>```
 5. ```<translated_text5>```
 6. ```<translated_text6>```
-
+```
 
 &nbsp;
 
