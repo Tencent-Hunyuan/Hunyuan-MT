@@ -101,9 +101,9 @@ The multiple <target_language> translations:
 ---
 
 ## 使用 transformers 推理
-首先，需要安装最新版本的transformers，推荐v4.55.4
+首先，需要安装最新版本的transformers，推荐v4.56.0
 ```SHELL
-pip install transformers==4.55.4
+pip install transformers==4.56.0
 ```
 
 以下代码片段展示了如何使用 transformers 库加载和使用模型。
