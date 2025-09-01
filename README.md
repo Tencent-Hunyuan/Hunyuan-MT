@@ -96,9 +96,9 @@ The multiple `<target_language>` translations:
 &nbsp;
 
 ### Use with transformers
-First, please install transformers, recommends v4.55.4
+First, please install transformers, recommends v4.56.0
 ```SHELL
-pip install transformers==4.55.4
+pip install transformers==4.56.0
 ```
 
 The following code snippet shows how to use the transformers library to load and apply the model.
