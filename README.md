@@ -101,6 +101,8 @@ First, please install transformers, recommends v4.56.0
 pip install transformers==4.56.0
 ```
 
+*!!! If you want to load fp8 model with transformers, you need to change the name"ignored_layers" in config.json to "ingore" and upgrade the compressed-tensors to compressed-tensors-0.11.0.*
+
 The following code snippet shows how to use the transformers library to load and apply the model.
 
 we use tencent/Hunyuan-MT-7B for example
