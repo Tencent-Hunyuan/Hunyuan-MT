@@ -33,7 +33,7 @@ The Hunyuan-MT comprises a translation model, Hunyuan-MT-7B, and an ensemble mod
 - In the WMT25 competition, the model achieved first place in 30 out of the 31 language categories it participated in.
 - Hunyuan-MT-7B achieves industry-leading performance among models of comparable scale
 - Hunyuan-MT-Chimera-7B is the industry’s first open-source translation ensemble model, elevating translation quality to a new level
-- A comprehensive training framework for translation models has been proposed, spanning from pretrain → cross-lingual pretraining (CPT) → supervised fine-tuning (SFT) → translation enhancement → ensemble refinement, achieving state-of-the-art (SOTA) results for models of similar size
+- A comprehensive training framework for translation models has been proposed, spanning from pretrain → continue pretraining (CPT) → supervised fine-tuning (SFT) → translation rl → ensemble rl, achieving state-of-the-art (SOTA) results for models of similar size
 
 ## Related News
 * 2025.9.1 We have open-sourced  **Hunyuan-MT-7B** , **Hunyuan-MT-Chimera-7B** on Hugging Face.
