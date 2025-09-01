@@ -15,7 +15,7 @@
 
 <p align="center">
     🖥️&nbsp;<a href="https://hunyuan.tencent.com" style="color: red;"><b>Official Website</b></a>&nbsp;&nbsp;|&nbsp;&nbsp;
-    🕹️&nbsp;<a href="https://hunyuan.tencent.com/modelSquare/home/list"><b>Demo</b></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    🕹️&nbsp;<a href="https://hunyuan.tencent.com/chat/HunyuanDefault?from=modelSquare&modelId=hunyuan-mt-7b"><b>Demo</b></a>&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 
 <p align="center">
