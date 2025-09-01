@@ -43,7 +43,7 @@ The Hunyuan-MT comprises a translation model, Hunyuan-MT-7B, and an ensemble mod
 ## Performance
 
 <div align='center'>
-<img src="overall_performance.png" width = "80%" />
+<img src="imgs/overall_performance.png" width = "80%" />
 </div>
 You can refer to our technical report for more experimental results and analysis.
 

@@ -45,7 +45,7 @@
 
 ## 效果
 <div align='center'>
-<img src="overall_performance.png" width = "80%" />
+<img src="imgs/overall_performance.png" width = "80%" />
 </div>
 
 更多的实验效果和分析可以参考我们的技术报告<a href="Hunyuan_MT_Technical_Report.pdf"><b>Technical Report</b> </a>
