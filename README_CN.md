@@ -696,5 +696,16 @@ response = client.chat.completions.create(
 print(response)
 ```
 
+Citing Hunyuan-MT:
+
+```bibtex
+@misc{hunyuanmt2025,
+  title={Hunyuan-MT Technical Report},
+  author={Mao Zheng, Zheng Li, Bingxin Qu, Mingyang Song, Yang Du, Mingrui Sun, Di Wang, Tao Chen, Jiaqi Zhu, Xingwu Sun, Yufei Wang, Can Xu, Chen Li, Kai Wang, Decheng Wu},
+  howpublished={\url{https://github.com/Tencent-Hunyuan/Hunyuan-MT}},
+  year={2025}
+}
+```
+
 ## 联系我们
 如果你想给我们的研发和产品团队留言，欢迎联系我们腾讯混元LLM团队。你可以通过邮件（hunyuan_opensource@tencent.com）联系我们。
