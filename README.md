@@ -467,6 +467,17 @@ docker run --entrypoint="python3" --gpus all \
     -m sglang.launch_server --model-path hunyuan/huanyuan_7B --tp 4 --trust-remote-code --host 0.0.0.0 --port 30000
 ```
 
+Citing Hunyuan-MT:
+
+```bibtex
+@misc{hunyuanmt2025,
+  title={Hunyuan-MT Technical Report},
+  author={Mao Zheng, Zheng Li, Bingxin Qu, Mingyang Song, Yang Du, Mingrui Sun, Di Wang, Tao Chen, Jiaqi Zhu, Xingwu Sun, Yufei Wang, Can Xu, Chen Li, Kai Wang, Decheng Wu},
+  howpublished={\url{https://github.com/Tencent-Hunyuan/Hunyuan-MT}},
+  year={2025}
+}
+```
+
 ## Contact Us
 
 If you would like to leave a message for our R&D and product teams, Welcome to contact our open-source team . You can also contact us via email (hunyuan_opensource@tencent.com).
