@@ -513,11 +513,14 @@ docker run --entrypoint="python3" --gpus all \
 Citing Hunyuan-MT:
 
 ```bibtex
-@misc{hunyuanmt2025,
-  title={Hunyuan-MT Technical Report},
-  author={Mao Zheng, Zheng Li, Bingxin Qu, Mingyang Song, Yang Du, Mingrui Sun, Di Wang, Tao Chen, Jiaqi Zhu, Xingwu Sun, Yufei Wang, Can Xu, Chen Li, Kai Wang, Decheng Wu},
-  howpublished={\url{https://github.com/Tencent-Hunyuan/Hunyuan-MT}},
-  year={2025}
+@misc{hunyuan_mt,
+      title={Hunyuan-MT Technical Report}, 
+      author={Mao Zheng and Zheng Li and Bingxin Qu and Mingyang Song and Yang Du and Mingrui Sun and Di Wang},
+      year={2025},
+      eprint={2509.05209},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2509.05209}, 
 }
 ```
 
