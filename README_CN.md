@@ -48,7 +48,7 @@
 <img src="imgs/overall_performance.png" width = "80%" />
 </div>
 
-更多的实验效果和分析可以参考我们的技术报告<a href="Hunyuan_MT_Technical_Report.pdf"><b>Technical Report</b> </a>
+更多的实验效果和分析可以参考我们的[技术报告](https://arxiv.org/abs/2509.05209)。
 
 &nbsp;
 
@@ -742,11 +742,14 @@ print(response)
 Citing Hunyuan-MT:
 
 ```bibtex
-@misc{hunyuanmt2025,
-  title={Hunyuan-MT Technical Report},
-  author={Mao Zheng, Zheng Li, Bingxin Qu, Mingyang Song, Yang Du, Mingrui Sun, Di Wang, Tao Chen, Jiaqi Zhu, Xingwu Sun, Yufei Wang, Can Xu, Chen Li, Kai Wang, Decheng Wu},
-  howpublished={\url{https://github.com/Tencent-Hunyuan/Hunyuan-MT}},
-  year={2025}
+@misc{hunyuan_mt,
+      title={Hunyuan-MT Technical Report}, 
+      author={Mao Zheng and Zheng Li and Bingxin Qu and Mingyang Song and Yang Du and Mingrui Sun and Di Wang},
+      year={2025},
+      eprint={2509.05209},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2509.05209}, 
 }
 ```
 
