@@ -1,6 +1,5 @@
-
 <p align="left">
-    <a href="README_CN.md">中文</a>&nbsp ｜ English</a>
+   <a href="README.md">English</a>  ｜ 中文</a>&nbsp
 </p>
 <br><br>
 
@@ -24,67 +23,74 @@
 </p>
 
 
-## Model Introduction
 
-The Hunyuan-MT comprises a translation model, Hunyuan-MT-7B, and an ensemble model, Hunyuan-MT-Chimera. The translation model is used to translate source text into the target language, while the ensemble model integrates multiple translation outputs to produce a higher-quality result. It primarily supports mutual translation among 33 languages, including five ethnic minority languages in China.
 
-## Key Features and Advantages
+## 模型介绍
 
-- In the WMT25 competition, the model achieved first place in 30 out of the 31 language categories it participated in.
-- Hunyuan-MT-7B achieves industry-leading performance among models of comparable scale
-- Hunyuan-MT-Chimera-7B is the industry’s first open-source translation ensemble model, elevating translation quality to a new level
-- A comprehensive training framework for translation models has been proposed, spanning from pretrain → continue pretraining (CPT) → supervised fine-tuning (SFT) → translation rl → ensemble rl, achieving state-of-the-art (SOTA) results for models of similar size
+混元翻译模型，包含一个翻译模型Hunyuan-MT-7B和一个集成模型Hunyuan-MT-Chimera。翻译模型用来将待翻译的文本翻译成目标语言，集成模型用来把翻译模型的多个翻译结果集成为一个更好的翻译。重点支持33语种互译，支持5种民汉语言。
 
-## Related News
-* 2025.9.1 We have open-sourced  **Hunyuan-MT-7B** , **Hunyuan-MT-Chimera-7B** on Hugging Face.
+
+
+### 核心特性与优势
+- WMT25参赛31语种之中30语种获得第一名的成绩。
+- Hunyuan-MT-7B同尺寸业界效果最优
+- Hunyuan-MT-Chimera-7B是业界首个开源翻译集成模型，可以将翻译效果再拉高一个档次
+- 提出了一个完整的翻译模型训练范式，从Pretrain->CPT->SFT->翻译强化->集成强化，翻译效果达到同尺寸SOTA。
+
+
+## 新闻
 <br>
 
+* 2025.9.1 我们在Hugging Face开源了 **Hunyuan-MT-7B** , **Hunyuan-MT-Chimera-7B**。
 
-## Performance
-
+## 效果
 <div align='center'>
 <img src="imgs/overall_performance.png" width = "80%" />
 </div>
-You can refer to our technical report for more experimental results and analysis.
 
-<a href="Hunyuan_MT_Technical_Report.pdf"><b>Technical Report</b> </a>
+更多的实验效果和分析可以参考我们的[技术报告](https://arxiv.org/abs/2509.05209)。
 
 &nbsp;
 
-## Model Links
+## 模型链接
 | Model Name  | Description | Download |
 | ----------- | ----------- |-----------
-| Hunyuan-MT-7B  | Hunyuan 7B translation model |🤗 [Model](https://huggingface.co/tencent/Hunyuan-MT-7B)|
-| Hunyuan-MT-7B-fp8 | Hunyuan 7B translation model，fp8 quant    | 🤗 [Model](https://huggingface.co/tencent/Hunyuan-MT-7B-fp8)|
-| Hunyuan-MT-Chimera | Hunyuan 7B translation ensemble model    | 🤗 [Model](https://huggingface.co/tencent/Hunyuan-MT-Chimera-7B)|
-| Hunyuan-MT-Chimera-fp8 | Hunyuan 7B translation ensemble model，fp8 quant     | 🤗 [Model](https://huggingface.co/tencent/Hunyuan-MT-Chimera-7B-fp8)|
+| Hunyuan-MT-7B  | 混元7B翻译模型 |🤗 [Model](https://huggingface.co/tencent/Hunyuan-MT-7B)|
+| Hunyuan-MT-7B-fp8 | 混元7B翻译模型，fp8量化    | 🤗 [Model](https://huggingface.co/tencent/Hunyuan-MT-7B-fp8)|
+| Hunyuan-MT-Chimera | 混元7B翻译集成模型    | 🤗 [Model](https://huggingface.co/tencent/Hunyuan-MT-Chimera-7B)|
+| Hunyuan-MT-Chimera-fp8 | 混元7B翻译集成模型，fp8量化     | 🤗 [Model](https://huggingface.co/tencent/Hunyuan-MT-Chimera-7B-fp8)|
+
 
 ## Prompts
 
 ### Prompt Template for ZH<=>XX Translation.
+---
 ```
 把下面的文本翻译成<target_language>，不要额外解释。
 
 <source_text>
 ```
-
+---
 
 ### Prompt Template for XX<=>XX Translation, excluding ZH<=>XX.
+---
 ```
 Translate the following segment into <target_language>, without additional explanation.
 
 <source_text>
 ```
+---
 
-### Prompt Template for Hunyuan-MT-Chimera-7B
+### Prompt Template for Hunyuan-MT-Chmeria-7B
 
+---
 ```
 Analyze the following multiple <target_language> translations of the <source_language> segment surrounded in triple backticks and generate a single refined <target_language> translation. Only output the refined translation, do not explain.
 
 The <source_language> segment:
 ```<source_text>```
 
-The multiple `<target_language>` translations:
+The multiple <target_language> translations:
 1. ```<translated_text1>```
 2. ```<translated_text2>```
 3. ```<translated_text3>```
@@ -92,20 +98,17 @@ The multiple `<target_language>` translations:
 5. ```<translated_text5>```
 6. ```<translated_text6>```
 ```
+---
 
-&nbsp;
-
-### Use with transformers
-First, please install transformers, recommends v4.56.0
+## 使用 transformers 推理
+首先，需要安装最新版本的transformers，推荐v4.56.0
 ```SHELL
 pip install transformers==4.56.0
 ```
 
 *!!! If you want to load fp8 model with transformers, you need to change the name"ignored_layers" in config.json to "ignore" and upgrade the compressed-tensors to compressed-tensors-0.11.0.*
 
-The following code snippet shows how to use the transformers library to load and apply the model.
-
-we use tencent/Hunyuan-MT-7B for example
+以下代码片段展示了如何使用 transformers 库加载和使用模型。
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -116,11 +119,11 @@ model_name_or_path = "tencent/Hunyuan-MT-7B"
 tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
 model = AutoModelForCausalLM.from_pretrained(model_name_or_path, device_map="auto")  # You may want to use bfloat16 and/or move to GPU here
 messages = [
-    {"role": "user", "content": "Translate the following segment into Chinese, without additional explanation.\n\nIt’s on the house."},
+    {"role": "user", "content": "Translate the following segment into Chinese, without additional explanation.\n\nGet something off your chest"},
 ]
 tokenized_chat = tokenizer.apply_chat_template(
     messages,
-    tokenize=True,
+    tokenize=True
     add_generation_prompt=False,
     return_tensors="pt"
 )
@@ -129,9 +132,11 @@ outputs = model.generate(tokenized_chat.to(model.device), max_new_tokens=2048)
 output_text = tokenizer.decode(outputs[0])
 ```
 
-We recommend using the following set of parameters for inference. Note that our model does not have the default system_prompt.
+
+我们推荐使用下面这组参数进行推理。注意，我们的模型没有默认 system_prompt。
 
 ```json
+
 {
   "top_k": 20,
   "top_p": 0.6,
@@ -142,7 +147,7 @@ We recommend using the following set of parameters for inference. Note that our 
 
 &nbsp;
 
-Supported languages:
+支持的语种:
 | Languages         | Abbr.   | Chinese Names   |
 |-------------------|---------|-----------------|
 | Chinese           | zh      | 中文            |
@@ -185,16 +190,15 @@ Supported languages:
 | Cantonese         | yue     | 粤语            |
 
 
-### Training Data Format
+## 训练数据格式处理
 
-If you need to fine-tune our Instruct model, we recommend processing the data into the following format.
+如果需要微调我们的模型，建议将数据处理成以下格式。
 
 ```python
-
 messages = [
     {"role": "system", "content": "You are a helpful assistant."},
-    {"role": "user", "content": "Why is seawater salty?" },
-    {"role": "assistant", "content": "Seawater is primarily saline due to dissolved salts and minerals. These substances come from the chemical materials in rocks and soil on the Earth's surface, which are carried into the ocean over time. When seawater evaporates, the water vapor leaves, but the salts and minerals remain, making the seawater saltier. Therefore, the salinity of seawater is determined by the amount of salts and minerals it contains."}
+    {"role": "user", "content": "海水为什么是咸的" },
+    {"role": "assistant", "content": "海水是咸的主要是因为其中含有许多溶解在水中的盐类和矿物质。这些盐类和矿物质来自于地球表面的岩石和土壤中的化学物质，随着时间的推移，它们被带到了海洋中。当海水蒸发时，水分蒸发掉了，但盐类和矿物质仍然留在水中，导致海水变得更加咸味。因此，海水的咸度是由其中的盐类和矿物质的含量决定的。"}
 ]
 
 from transformers import AutoTokenizer
@@ -204,50 +208,51 @@ train_ids = tokenizer.apply_chat_template(messages)
 
 &nbsp;
 
-### Train with LLaMA-Factory
+## 使用 LLaMA-Factory 训练
 
-In the following chapter, we will introduce how to use `LLaMA-Factory` to fine-tune the `Hunyuan` model.
+我们将介绍如何使用`LLaMA-Factory`来进行微调混元模型。
 
-#### Prerequisites
+### 安装环境
 
-Verify installation of the following dependencies:
-- **LLaMA-Factory**: Follow [official installation guide](https://github.com/hiyouga/LLaMA-Factory)
-- **DeepSpeed** (optional): Follow [official installation guide](https://github.com/deepspeedai/DeepSpeed#installation)
-- **Transformer Library**: Use the companion branch (Hunyuan-submitted code is pending review)
-    ```
-    pip install git+https://github.com/huggingface/transformers@4970b23cedaf745f963779b4eae68da281e8c6ca
-    ```
+开始之前，确保你已经安装了以下代码库：
+1. 使用[LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory)官方指导进行安装。
+2. 使用[DeepSpeed](https://github.com/deepspeedai/DeepSpeed#installation)官方指导进行安装（可选）。
+3. 安装配套的transformer库。当前混元提交的transformer代码正在评审中，需要获取配套的分支。
+```
+pip install git+https://github.com/huggingface/transformers@4970b23cedaf745f963779b4eae68da281e8c6ca
+```
 
-#### Data preparation
+### 准备数据
 
-We need to prepare a custom dataset:
-1. Organize your data in `json` format and place it in the `data` directory in `LLaMA-Factory`. The current implementation uses the `sharegpt` dataset format, which requires the following structure:
+我们需要准备自定义的数据集：
+
+1. 请将您的数据以`json`格式进行组织，并将数据放入`LLaMA-Factory`的`data`目录中。当前使用的是`sharegpt`格式的数据集，需要遵循以下格式：
 ```
 [
   {
     "messages": [
       {
         "role": "system",
-        "content": "System prompt (optional)"
+        "content": "系统提示词（选填）"
       },
       {
         "role": "user",
-        "content": "Human instruction"
+        "content": "人类指令"
       },
       {
         "role": "assistant",
-        "content": "Model response"
+        "content": "模型回答"
       }
     ]
   }
 ]
 ```
-Refer to the [Data Format](#training-data-format) section mentioned earlier for details.
+可以参考前面章节中对[数据格式](#训练数据格式处理)的说明。
 
-2. Define your dataset in the data/dataset_info.json file using the following format:
+2. 在`data/dataset_info.json`文件中提供您的数据集定义，并采用以下格式：
 ```
-"dataset_name": {
-  "file_name": "dataset.json",
+"数据集名称": {
+  "file_name": "data.json",
   "formatting": "sharegpt",
   "columns": {
     "messages": "messages"
@@ -262,66 +267,160 @@ Refer to the [Data Format](#training-data-format) section mentioned earlier for 
 }
 ```
 
-#### Training execution
+### 训练
 
-1. Copy all files from the `llama_factory_support/example_configs` directory to the `example/hunyuan` directory in `LLaMA-Factory`.
-2. Modify the model path and dataset name in the configuration file `hunyuan_full.yaml`. Adjust other configurations as needed:
-```
-### model
-model_name_or_path: [!!!add the model path here!!!]
+1. 将`llama_factory_support/example_configs`目录下的文件都拷贝到`LLaMA-Factory`的`example/hunyuan`目录下。
+2. 修改配置文件`hunyuan_full.yaml`中的模型路径和数据集名称，其他的配置请根据需要进行修改。
+  ```
+  ### model
+  model_name_or_path: [!!!add the model path here!!!]
 
-### dataset
-dataset: [!!!add the dataset name here!!!]
-```
-3. Execute training commands:
-    *​​Single-node training​​
-    Note: Set the environment variable DISABLE_VERSION_CHECK to 1 to avoid version conflicts.
+  ### dataset
+  dataset: [!!!add the data set name here!!!]
+  ```
+3. 执行训练命令
+    * 运行单机训练
+    请注意这里需要设置`DISABLE_VERSION_CHECK`环境变量，避免版本冲突。
     ```
     export DISABLE_VERSION_CHECK=1
     llamafactory-cli train examples/hunyuan/hunyuan_full.yaml
     ```
-    *Multi-node training​​
-    Execute the following command on each node. Configure NNODES, NODE_RANK, MASTER_ADDR, and MASTER_PORT according to your environment:
+    * 运行多机训练
+    在每个节点上执行以下命令。请注意将`torchrun`需要的`NNODES`、`NODE_RANK`、`MASTER_ADDR`和`MASTER_PORT`按照您运行的环境进行配置。
     ```
     export DISABLE_VERSION_CHECK=1
     FORCE_TORCHRUN=1 NNODES=${NNODES} NODE_RANK=${NODE_RANK} MASTER_ADDR=${MASTER_ADDR} MASTER_PORT=${MASTER_PORT} \
-    llamafactory-cli train examples/hunyuan/hunyuan_full.yaml
+    llamafactory-cli train examples/hunyuan_full.yaml
     ```
 
 &nbsp;
 
+## 推理和部署
 
-## Quantization Compression
-We used our own [AngleSlim](https://github.com/tencent/AngelSlim) compression tool to produce FP8 and INT4 quantization models. `AngleSlim` is a toolset dedicated to creating a more user-friendly, comprehensive and efficient model compression solution.
+HunyuanLLM可以采用TensorRT-LLM, vLLM或sglang部署。为了简化部署过程HunyuanLLM提供了预构建docker镜像，详见一下章节。
 
-### FP8 Quantization
-We use FP8-static quantization, FP8 quantization adopts 8-bit floating point format, through a small amount of calibration data (without training) to pre-determine the quantization scale, the model weights and activation values will be converted to FP8 format, to improve the inference efficiency and reduce the deployment threshold. We you can use AngleSlim quantization, you can also directly download our quantization completed open source model to use [AngelSlim](https://huggingface.co/AngelSlim).
+镜像：https://hub.docker.com/r/hunyuaninfer/hunyuan-7b/tags
 
+## 使用TensorRT-LLM推理
+### Docker:
 
-## Deployment
+为了简化部署过程，HunyuanLLM提供了预构建docker镜像 (注意： 该镜像要求Host的Cuda版本为12.8以上）：
 
-For deployment, you can use frameworks such as **TensorRT-LLM**, **vLLM**, or **SGLang** to serve the model and create an OpenAI-compatible API endpoint.
-
-image: https://hub.docker.com/r/hunyuaninfer/hunyuan-7B/tags
-
-
-### TensorRT-LLM
-
-#### Docker Image
-
-We provide a pre-built Docker image based on the latest version of TensorRT-LLM.
-
-We use tencent/Hunyuan-7B-Instruct for example
-- To get started:
-
-```
+[hunyuaninfer/hunyuan-7b:hunyuan-7b-trtllm](https://hub.docker.com/r/hunyuaninfer/hunyuan-7b/tags) 。您只需要下载模型文件并用下面代码启动docker即可开始推理模型。
+```shell
+# 拉取
+国内：
 docker pull docker.cnb.cool/tencent/hunyuan/hunyuan-7b:hunyuan-7b-trtllm
-```
-```
-docker run --privileged --user root --name hunyuanLLM_infer --rm -it --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 --gpus=all hunyuaninfer/hunyuan-7B:hunyuan-7b-trtllm
+国外：
+docker pull hunyuaninfer/hunyuan-7b:hunyuan-7b-trtllm
+
+# 启动
+docker run --privileged --user root --name hunyuanLLM_infer --rm -it --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 --gpus=all hunyuaninfer/hunyuan-7b:hunyuan-7b-trtllm
 ```
 
-- Prepare Configuration file:
+注: Docker容器权限管理。以上代码采用特权模式（--privileged）启动Docker容器会赋予容器较高的权限，增加数据泄露和集群安全风险。建议在非必要情况下避免使用特权模式，以降低安全威胁。对于必须使用特权模式的场景，应进行严格的安全评估，并实施相应的安全监控、加固措施。
+
+### BF16部署
+
+#### Step1：执行推理
+
+#### 方式1：命令行推理
+
+下面我们展示一个代码片段，采用`TensorRT-LLM`快速请求chat model：
+修改 examples/pytorch/quickstart_advanced.py 中如下代码：
+
+
+```python
+def setup_llm(args):
+    kv_cache_config = KvCacheConfig(
+        enable_block_reuse=not args.disable_kv_cache_reuse,
+        free_gpu_memory_fraction=args.kv_cache_fraction,
+    )
+    spec_config = None
+
+    hf_ckpt_path="$your_hunyuan_model_path"
+    tokenizer = AutoTokenizer.from_pretrained(hf_ckpt_path, trust_remote_code=True)
+    llm = LLM(
+        tokenizer=tokenizer,
+        model=args.model_dir,
+        backend='pytorch',
+        disable_overlap_scheduler=args.disable_overlap_scheduler,
+        kv_cache_dtype=args.kv_cache_dtype,
+        kv_cache_config=kv_cache_config,
+        attn_backend=args.attention_backend,
+        use_cuda_graph=args.use_cuda_graph,
+        cuda_graph_padding_enabled=args.cuda_graph_padding_enabled,
+        cuda_graph_batch_sizes=args.cuda_graph_batch_sizes,
+        load_format=args.load_format,
+        print_iter_log=args.print_iter_log,
+        enable_iter_perf_stats=args.print_iter_log,
+        torch_compile_config=TorchCompileConfig(
+            enable_fullgraph=args.use_torch_compile,
+            enable_inductor=args.use_torch_compile,
+            enable_piecewise_cuda_graph= \
+                args.use_piecewise_cuda_graph)
+        if args.use_torch_compile else None,
+        moe_backend=args.moe_backend,
+        enable_trtllm_sampler=args.enable_trtllm_sampler,
+        max_seq_len=args.max_seq_len,
+        max_batch_size=args.max_batch_size,
+        max_num_tokens=args.max_num_tokens,
+        enable_attention_dp=args.enable_attention_dp,
+        tensor_parallel_size=args.tp_size,
+        pipeline_parallel_size=args.pp_size,
+        moe_expert_parallel_size=args.moe_ep_size,
+        moe_tensor_parallel_size=args.moe_tp_size,
+        moe_cluster_parallel_size=args.moe_cluster_size,
+        enable_chunked_prefill=args.enable_chunked_prefill,
+        speculative_config=spec_config,
+        trust_remote_code=args.trust_remote_code,
+        gather_generation_logits=args.return_generation_logits)
+
+    sampling_params = SamplingParams(
+        end_id=127960,
+        max_tokens=args.max_tokens,
+        temperature=args.temperature,
+        top_k=args.top_k,
+        top_p=args.top_p,
+        return_context_logits=args.return_context_logits,
+        return_generation_logits=args.return_generation_logits,
+        logprobs=args.logprobs)
+    return llm, sampling_params
+
+
+def main():
+    args = parse_arguments()
+    prompts = args.prompt if args.prompt else example_prompts
+
+    llm, sampling_params = setup_llm(args)
+    new_prompts = []
+    for prompt in prompts:
+        messages = [{"role": "user", "content": f"{prompt}"}]
+        new_prompts.append(
+            llm.tokenizer.apply_chat_template(messages,
+                                                tokenize=False,
+                                                add_generation_prompt=True))
+    prompts = new_prompts
+    outputs = llm.generate(prompts, sampling_params)
+
+    for i, output in enumerate(outputs):
+        prompt = output.prompt
+        generated_text = output.outputs[0].text
+        print(f"[{i}] Prompt: {prompt!r}, Generated text: {generated_text!r}")
+```
+
+运行方式：
+
+```shell
+python3 quickstart_advanced.py --model_dir "HunyuanLLM模型路径" --tp_size 1
+```
+
+#### 方式2：服务化推理
+
+下面我们展示使用`TensorRT-LLM`服务化的方式部署模型和请求。
+
+以tencent/Hunyuan-7B-Instruct为例
+准备配置文件：
 
 ```
 cat >/path/to/extra-llm-api-config.yml <<EOF
@@ -338,11 +437,9 @@ print_iter_log: true
 EOF
 ```
 
+启动服务：
 
-- Start the API server:
-
-
-```
+```shell
 trtllm-serve \
   /path/to/HunYuan-7b \
   --host localhost \
@@ -350,40 +447,104 @@ trtllm-serve \
   --backend pytorch \
   --max_batch_size 32 \
   --max_num_tokens 16384 \
-  --tp_size 2 \
+  --tp_size 1 \
   --kv_cache_free_gpu_memory_fraction 0.6 \
   --trust_remote_code \
   --extra_llm_api_options /path/to/extra-llm-api-config.yml
 ```
 
+服务启动成功后, 使用 OpenAI API 进行模型推理调用：
+```
+curl -X POST "http://localhost:8000/v1/chat/completions" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "model": "HunYuan/HunYuan-7b",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Write a short summary of the benefits of regular exercise"
+      }
+    ]
+  }'
+```
 
-### vllm
+#### FP8/Int4量化模型部署：
+目前 TensorRT-LLM 的 fp8 和 int4 量化模型正在支持中，敬请期待。
 
-#### Start
-Please use vLLM version v0.10.0 or higher for inference.
 
-First, please install transformers. We will merge it into the main branch later.
+## 使用vLLM推理
+### 版本要求:
+
+请使用vLLM v0.10.0之后的版本进行部署和推理
+
+需要安装指定版本的transformers，我们将在不久后完成对transformers主分支的合入
 ```SHELL
 pip install git+https://github.com/huggingface/transformers@4970b23cedaf745f963779b4eae68da281e8c6ca
 ```
+### BF16部署
 
-We use tencent/Hunyuan-7B-Instruct for example
-- Download Model file:
-  - Huggingface:  will download automicly by vllm.
-  - ModelScope: `modelscope download --model Tencent-Hunyuan/Hunyuan-7B-Instruct`
-
-- model download by huggingface:
+以tencent/Hunyuan-7B-Instruct为例，已经通过上述的transformers获取了模型地址
 ```shell
-export MODEL_PATH=tencent/Hunyuan-7B-Instruct
+export MODEL_PATH=PATH_TO_MODEL
 ```
 
-- model downloaded by modelscope:
-```shell
-export MODEL_PATH=/root/.cache/modelscope/hub/models/Tencent-Hunyuan/Hunyuan-7B-Instruct/
+#### Step1：执行推理
+
+#### 方式1：命令行推理
+
+下面我们展示一个代码片段，采用`vLLM`快速请求chat model：
+
+注: vLLM组件远程代码执行防护。下列代码中vLLM组件的trust-remote-code配置项若被启用，将允许加载并执行来自远程模型仓库的代码，这可能导致恶意代码的执行。除非业务需求明确要求，否则建议该配置项处于禁用状态，以降低潜在的安全威胁。
+
+
+```python
+import os
+from typing import List, Optional
+from vllm import LLM, SamplingParams
+from vllm.inputs import PromptType
+from transformers import AutoTokenizer
+
+model_path=os.environ.get('MODEL_PATH')
+tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
+
+llm = LLM(model=model_path,
+        tokenizer=model_path,
+        trust_remote_code=True,
+        dtype='bfloat16',
+        tensor_parallel_size=4,
+        gpu_memory_utilization=0.9)
+
+sampling_params = SamplingParams(
+    temperature=0.7, top_p=0.8, max_tokens=4096, top_k=20, repetition_penalty=1.05)
+
+messages = [
+    {
+        "role": "system",
+        "content": "You are a helpful assistant.",
+    },
+    {"role": "user", "content": "Write a short summary of the benefits of regular exercise"},
+]
+
+tokenized_chat = tokenizer.apply_chat_template(messages, tokenize=True, add_generation_prompt=True, return_tensors="pt")
+
+dummy_inputs: List[PromptType] = [{
+    "prompt_token_ids": batch
+} for batch in tokenized_chat.numpy().tolist()]
+
+outputs = llm.generate(dummy_inputs, sampling_params)
+
+# Print the outputs.
+for output in outputs:
+    prompt = output.prompt
+    generated_text = output.outputs[0].text
+    print(f"Prompt: {prompt!r}, Generated text: {generated_text!r}")
 ```
 
-- Start the API server:
+#### 方式2：服务化推理
 
+下面我们展示使用`vLLM`服务化的方式部署模型并请求
+
+我们启动服务，运行 :
 ```shell
 python3 -m vllm.entrypoints.openai.api_server \
     --host 0.0.0.0 \
@@ -396,7 +557,8 @@ python3 -m vllm.entrypoints.openai.api_server \
     --served-model-name hunyuan \
     2>&1 | tee log_server.txt
 ```
-- After running service script successfully, run the request script
+
+运行成功后, 运行请求脚本：
 ```shell
 curl http://0.0.0.0:8000/v1/chat/completions -H 'Content-Type: application/json' -d '{
 "model": "hunyuan",
@@ -418,15 +580,16 @@ curl http://0.0.0.0:8000/v1/chat/completions -H 'Content-Type: application/json'
 "stop_token_ids": [127960]
 }'
 ```
-#### Quantitative model deployment
-This section describes the process of deploying a post-quantization model using vLLM.
 
-Default server in BF16.
+### 量化模型部署：
 
-##### Int8 quantitative model deployment
-Deploying the Int8-weight-only version of the HunYuan-7B model only requires setting the environment variables
+本部分介绍采用vLLM部署量化后模型的流程。
 
-Next we start the Int8 service. Run:
+
+#### Int8量化模型部署：
+部署Int8-weight-only版本HunYuan-7B模型
+
+我们启动Int8服务，运行：
 ```shell
 python3 -m vllm.entrypoints.openai.api_server \
     --host 0.0.0.0 \
@@ -440,13 +603,13 @@ python3 -m vllm.entrypoints.openai.api_server \
     2>&1 | tee log_server.txt
 ```
 
+#### Int4量化模型部署：
+部署Int4-weight-only版本HunYuan-7B模型，采用GPTQ方式：
 
-##### Int4 quantitative model deployment
-Deploying the Int4-weight-only version of the HunYuan-7B model only requires setting the environment variables , using the GPTQ method
 ```shell
 export MODEL_PATH=PATH_TO_INT4_MODEL
 ```
-Next we start the Int4 service. Run
+接着我们启动Int4服务，运行：
 ```shell
 python3 -m vllm.entrypoints.openai.api_server \
     --host 0.0.0.0 \
@@ -460,11 +623,11 @@ python3 -m vllm.entrypoints.openai.api_server \
     2>&1 | tee log_server.txt
 ```
 
-##### FP8 quantitative model deployment
-Deploying the W8A8C8 version of the HunYuan-7B model only requires setting the environment variables
 
+#### FP8量化模型部署：
+部署W8A8C8版本HunYuan-7B模型
 
-Next we start the FP8 service. Run
+我们启动FP8服务，运行：
 ```shell
 python3 -m vllm.entrypoints.openai.api_server \
     --host 0.0.0.0 \
@@ -478,26 +641,18 @@ python3 -m vllm.entrypoints.openai.api_server \
     2>&1 | tee log_server.txt
 ```
 
+## 使用sglang推理
 
+### BF16部署
 
+#### Step1: 拉取镜像
 
-### SGLang
-
-#### Docker Image
-
-We also provide a pre-built Docker image based on the latest version of SGLang.
-
-We use tencent/Hunyuan-7B-Instruct for example
-
-To get started:
-
-- Pull the Docker image
 
 ```
 docker pull lmsysorg/sglang:latest
 ```
 
-- Start the API server:
+- 启动 API server:
 
 ```
 docker run --entrypoint="python3" --gpus all \
@@ -507,20 +662,96 @@ docker run --entrypoint="python3" --gpus all \
     --privileged \
     --ipc=host \
      lmsysorg/sglang:latest \
-    -m sglang.launch_server --model-path hunyuan/huanyuan_7B --tp 4 --trust-remote-code --host 0.0.0.0 --port 30000
+    -m sglang.launch_server --model-path hunyuan/huanyuan_7B --tp 1 --trust-remote-code --host 0.0.0.0 --port 30000
+```
+
+#### Step2：执行推理
+
+#### 方式1：命令行推理
+
+下面我们展示一个代码片段，采用`sglang`快速请求chat model：
+
+
+```python
+import sglang as sgl
+from transformers import AutoTokenizer
+
+model_path=os.environ.get('MODEL_PATH')
+
+
+tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
+
+messages = [
+    {
+        "role": "system",
+        "content": "You are a helpful assistant.",
+    },
+    {"role": "user", "content": "Write a short summary of the benefits of regular exercise"},
+]
+prompts = []
+prompts.append(tokenizer.apply_chat_template(
+    messages,
+    tokenize=False,
+    add_generation_prompt=True
+))
+print(prompts)
+
+llm = sgl.Engine(
+    model_path=model_path,
+    tp_size=1,
+    trust_remote_code=True,
+    mem_fraction_static=0.7,
+)
+
+sampling_params = {"temperature": 0.7, "top_p": 0.8, "top_k": 20, "max_new_tokens": 4096}
+outputs = llm.generate(prompts, sampling_params)
+for prompt, output in zip(prompts, outputs):
+    print(f"Prompt: {prompt}\nGenerated text: {output['text']}")
+```
+
+#### 方式2：服务化推理
+
+下面我们展示使用`sglang`服务化的方式部署模型和请求。
+
+```shell
+model_path="HunyuanLLM模型路径"
+python3 -u -m sglang.launch_server \
+    --model-path $model_path \
+    --tp 4 \
+    --trust-remote-code
+```
+
+服务启动成功后, 运行请求脚本：
+```python
+import openai
+client = openai.Client(
+    base_url="http://localhost:30000/v1", api_key="EMPTY")
+
+response = client.chat.completions.create(
+    model="default",
+    messages= [
+        {"role": "user", "content": "Write a short summary of the benefits of regular exercise"},
+    ],
+    temperature=0.7,
+    max_tokens=4096,
+    extra_body={"top_p": 0.8, "top_k": 20}
+)
+print(response)
 ```
 
 Citing Hunyuan-MT:
 
 ```bibtex
-@misc{hunyuanmt2025,
-  title={Hunyuan-MT Technical Report},
-  author={Mao Zheng, Zheng Li, Bingxin Qu, Mingyang Song, Yang Du, Mingrui Sun, Di Wang, Tao Chen, Jiaqi Zhu, Xingwu Sun, Yufei Wang, Can Xu, Chen Li, Kai Wang, Decheng Wu},
-  howpublished={\url{https://github.com/Tencent-Hunyuan/Hunyuan-MT}},
-  year={2025}
+@misc{hunyuan_mt,
+      title={Hunyuan-MT Technical Report}, 
+      author={Mao Zheng and Zheng Li and Bingxin Qu and Mingyang Song and Yang Du and Mingrui Sun and Di Wang},
+      year={2025},
+      eprint={2509.05209},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2509.05209}, 
 }
 ```
 
-## Contact Us
-
-If you would like to leave a message for our R&D and product teams, Welcome to contact our open-source team . You can also contact us via email (hunyuan_opensource@tencent.com).
+## 联系我们
+如果你想给我们的研发和产品团队留言，欢迎联系我们腾讯混元LLM团队。你可以通过邮件（hunyuan_opensource@tencent.com）联系我们。
