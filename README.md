@@ -20,7 +20,8 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/Tencent-Hunyuan/Hunyuan-MT"><b>GITHUB</b></a>
+    <a href="https://github.com/Tencent-Hunyuan/Hunyuan-MT"><b>GITHUB</b></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="https://www.arxiv.org/pdf/2509.05209"><b>Technical Report</b> </a>
 </p>
 
 
@@ -47,7 +48,7 @@ The Hunyuan-MT comprises a translation model, Hunyuan-MT-7B, and an ensemble mod
 </div>
 You can refer to our technical report for more experimental results and analysis.
 
-<a href="Hunyuan_MT_Technical_Report.pdf"><b>Technical Report</b> </a>
+<a href="https://www.arxiv.org/pdf/2509.05209"><b>Technical Report</b> </a>
 
 &nbsp;
 
