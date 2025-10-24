@@ -312,7 +312,7 @@ image: https://hub.docker.com/r/hunyuaninfer/hunyuan-7B/tags
 
 We provide a pre-built Docker image based on the latest version of TensorRT-LLM.
 
-We use tencent/Hunyuan-7B-Instruct for example
+We use tencent/Hunyuan-7B-MT for example
 - To get started:
 
 ```
@@ -368,19 +368,19 @@ First, please install transformers. We will merge it into the main branch later.
 pip install git+https://github.com/huggingface/transformers@4970b23cedaf745f963779b4eae68da281e8c6ca
 ```
 
-We use tencent/Hunyuan-7B-Instruct for example
+We use tencent/Hunyuan-7B-MT for example
 - Download Model file:
   - Huggingface:  will download automicly by vllm.
-  - ModelScope: `modelscope download --model Tencent-Hunyuan/Hunyuan-7B-Instruct`
+  - ModelScope: `modelscope download --model Tencent-Hunyuan/Hunyuan-7B-MT`
 
 - model download by huggingface:
 ```shell
-export MODEL_PATH=tencent/Hunyuan-7B-Instruct
+export MODEL_PATH=tencent/Hunyuan-7B-MT
 ```
 
 - model downloaded by modelscope:
 ```shell
-export MODEL_PATH=/root/.cache/modelscope/hub/models/Tencent-Hunyuan/Hunyuan-7B-Instruct/
+export MODEL_PATH=/root/.cache/modelscope/hub/models/Tencent-Hunyuan/Hunyuan-7B-MT/
 ```
 
 - Start the API server:
@@ -488,7 +488,7 @@ python3 -m vllm.entrypoints.openai.api_server \
 
 We also provide a pre-built Docker image based on the latest version of SGLang.
 
-We use tencent/Hunyuan-7B-Instruct for example
+We use tencent/Hunyuan-7B-MT for example
 
 To get started:
 
