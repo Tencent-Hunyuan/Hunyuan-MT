@@ -37,6 +37,7 @@ The Hunyuan-MT comprises a translation model, Hunyuan-MT-7B, and an ensemble mod
 - A comprehensive training framework for translation models has been proposed, spanning from pretrain → continue pretraining (CPT) → supervised fine-tuning (SFT) → translation rl → ensemble rl, achieving state-of-the-art (SOTA) results for models of similar size
 
 ## Related News
+* 2025.12.30, we have open-sourced **HY-MT1.5-1.8B** and **HY-MT1.5-7B** on Hugging Face. Please go to our new github: https://github.com/Tencent-Hunyuan/HY-MT
 * 2025.9.1 We have open-sourced  **Hunyuan-MT-7B** , **Hunyuan-MT-Chimera-7B** on Hugging Face.
 <br>
 
