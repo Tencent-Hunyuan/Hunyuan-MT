@@ -39,7 +39,8 @@
 
 
 ## 新闻
-<br>
+
+* 🔥 2025.12.30, 我们在Hugging Face开源了 **HY-MT1.5-1.8B** 和 **HY-MT1.5-7B**。 请移步我们的新github: https://github.com/Tencent-Hunyuan/HY-MT
 
 * 2025.9.1 我们在Hugging Face开源了 **Hunyuan-MT-7B** , **Hunyuan-MT-Chimera-7B**。
 
